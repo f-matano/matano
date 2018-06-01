@@ -1,2 +1,41 @@
-test
-test2
+<html>
+<head>
+<title>CloudFront tool</title>
+</head>
+<body>
+<h1>CloudFront invalidation page (仮)</h1>
+ <form action="check.php" method="post">
+      <div>
+        Path<br>
+        <input type="text" name="cpath" size="40">
+      </div>
+      <div>
+        <input type="submit" name="send" value="送信する">
+      </div>
+    </form>
+</body>
+</html>
+
+
+
+<?php
+/* 前ページから値を受け取る */
+$text_name = $_POST['cpath'];
+
+/* それぞれを htmlspecialchars , utf-8にする */
+$text_name = htmlspecialchars($text_name,ENT_QUOTES,'utf-8');
+
+/* 識別番号の表示 */
+print'<h3>識別番号:';
+print $text_name;
+print'</h3>';
+print'<br />';
+
+$text = '.txt'; /* 拡張子を値に入れる */
+$text_addition = $text_name.$text; /* 識別番号と拡張子を結合する */ 
+
+/* file_put_contents() 関数でファイル名の $text_additin に住所の値 $mail_address を書き込む */
+file_put_contents("$text_addition"); 
+print'<br/>';
+print "<h3>$test_addition<h3>";
+print'<br/>';
